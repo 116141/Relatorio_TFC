@@ -1,0 +1,226 @@
+% 4º LEIC Estudante Edmilson Gil De Carvalho Fernandes
+% edmilsongilfernandes@student.unicv.edu.cv 
+% 4º ano EIC
+\documentclass[a4paper,12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[hidelinks]{hyperref}
+\DeclareUnicodeCharacter{202F}{~}
+\DeclareUnicodeCharacter{2194}{\ensuremath{\leftrightarrow}}
+\DeclareUnicodeCharacter{2248}{\ensuremath{\approx}}
+\usepackage{graphicx}
+\usepackage{background}
+\usepackage[toc, acronym]{glossaries}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning, arrows.meta, calc, shapes.geometric}
+\usepackage[lmargin=2cm,tmargin=2cm,rmargin=2cm,bmargin=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{indentfirst}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage[onehalfspacing]{setspace}
+\usepackage[portuges]{babel}
+\usepackage{datetime}
+\usepackage[T1]{fontenc}
+\usepackage{ragged2e}
+\usepackage{url}
+
+\selectlanguage{portuges}
+
+\newdateformat{monthyeardate}{ \monthname[\THEMONTH], \THEYEAR}
+
+ %   Imagen na fundo
+\backgroundsetup{scale=1, angle=0, opacity=1, contents={\includegraphics[scale=1]{figuras/tfc background.jpg }}}
+
+% Glossário
+\newglossaryentry{ovs}{
+    name={OVS},
+    description={Open vSwitch}
+}
+
+\makeglossaries
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+% Capa
+\BgThispage
+\begin{center}
+% Página com imagem de fundo
+    \includegraphics[width=10cm, height=5cm]{figuras/unicv_fct.png} % Verifique se o caminho está correto
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \vspace{-0.5cm}
+        \textbf{UNIVERSIDADE DE CABO VERDE}\\
+        {FACULDADE DE CIÊNCIAS E TECNOLOGIA}\\
+        {LICENCIATURA EM ENGENHARIA ELETROTÉCNICA}
+    \end{minipage}
+    
+    % Tema
+    \vspace{3cm}
+    \huge{\textbf{Blockchain em uma nova abordagem em sistema de votações eletrónicas}}
+
+    \vspace{4cm}
+    \large
+    \begin{tabular}{c}
+        \textsl{\LARGE{\color{white} Edmilson Gil De Carvalho Fernandes }}\\
+        \textrm{\color{white}{Orientador}: Prof. Dr. Celestino Lopes de Barros}
+    \end{tabular}
+    
+    \vspace{6cm}
+    \color{white}Campus Palmarejo Grande, Praia, \monthyeardate \today
+    % Página específica com fundo
+\backgroundsetup{
+  contents={\includegraphics[scale=1]{figuras/tfc background.jpg}}
+}
+
+\end{center}
+
+ \newpage
+% Página de título
+\NoBgThispage
+\begin{center}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\linewidth]{figuras/unicv_fct.png} % Verifique se o caminho está correto
+        \label{fig:enter-label}
+    \end{figure}
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \vspace{0.5cm}
+        \textbf{UNIVERSIDADE DE CABO VERDE}\\
+        \textbf{FACULDADE DE CIÊNCIAS E TECNOLOGIA}\\
+        \textbf{LICENCIATURA EM ENGENHARIA INFORMÁTICA E DE COMPUTADORES}
+    \end{minipage}
+    
+    % Tema
+    \vspace{2.5cm}
+    \LARGE{\textbf{Blockchain em uma nova abordagem em sistema de votações eletrónicas}}
+\end{center}
+
+\vspace{1.5cm}
+\begin{flushright}
+    Projeto sobre uma nova\\ 
+    abordagem em sistema\\
+    de votações eletrónicas \\
+    desenvolvido durante o Trabalho\\
+    Final do Curso, apresentado à\\
+    Universidade de Cabo Verde para\\ 
+    obtenção do grau de Licenciatura\\ 
+    em Engenharia Informática e de\\
+    Computadores.
+\end{flushright}
+\NoBgThispage
+\begin{center}
+    \vspace{1.5cm}
+    {\large
+        \textbf{Edmilson Gil De Carvalho Fernandes} \\
+        \begin{tabular}{rl}
+            {Orientador}: & \textbf{Prof. Dr. Celestino Lopes de Barros}
+        \end{tabular}
+    }
+\end{center}
+
+\newpage
+
+% Página de aprovação
+\begin{center}
+    Praia, \today
+    
+    \vspace{1cm}
+    Trabalho Fim de Curso (TFC) apresentado à Universidade de Cabo Verde (UNICV) sob título Blockchain em uma nova abordagem em sistema de votações eletrónicas
+    
+    \vspace{1.5cm}
+    \textbf{Elaborado Por}: Edmilson Gil De Carvalho Fernandes
+    
+    \vspace{1.5cm}
+    É aprovado pelos membros do júri, como requisito parcial à obtenção do grau de Licenciatura em Engenharia Informática e de Computadores.
+    
+    \vspace{1.5cm}
+    \textbf{Presidente}\\
+    \vspace{1.5cm}
+    ----------------------------------------------------------------------\\
+    \vspace{1.5cm}
+    \textbf{Arguente:}\\
+    \vspace{1.5cm}
+    ----------------------------------------------------------------------\\
+    \vspace{1.5cm}
+    \textbf{Orientador:}\\
+    \vspace{1.5cm}
+    ----------------------------------------------------------------------\\
+    \vspace{1cm}
+    \textbf{Data}\\
+    \vspace{1cm}
+    Praia, \textunderscore\textunderscore\textunderscore\textunderscore\textunderscore/
+            \textunderscore\textunderscore\textunderscore\textunderscore\textunderscore/
+            \textunderscore\textunderscore\textunderscore\textunderscore\textunderscore
+\end{center}
+
+\newpage
+
+\pagenumbering{roman}
+
+% Incluir agradecimentos
+\include{capitulos/agradecimentos}
+
+% Introduzir Resumo
+\input{capitulos/resumo}
+
+\newpage
+
+% Introduzir Abstract
+\input{capitulos/abstract}
+
+\newpage
+
+\renewcommand{\listtablename}{Lista de Figuras}
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoffigures
+
+\newpage
+
+\renewcommand{\listtablename}{Lista de Tabelas}
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+
+\newpage
+
+% Lista de Abreviaturas e Siglas
+\printglossary[title=Lista de Abreviaturas e Siglas, type=\acronymtype]
+
+\newpage
+
+\tableofcontents
+
+\newpage
+% Página específica com fundo
+%\backgroundsetup{
+ % contents={\includegraphics[scale=1]{figuras/tfc background.jpg}}}
+
+% Incluir capítulos reorganizados
+\input{capitulos/cap_1_Introducao}
+\newpage
+\input{capitulos/cap_2_EstadoDaArte}
+\newpage
+\input{capitulos/cap_Metodologia}
+\newpage
+\input{capitulos/cap_4_Proposta}
+\newpage
+\input{capitulos/cap_5_Resultados}
+\newpage
+\input{capitulos/cap_6_Discussao}
+\newpage
+\input{capitulos/cap_7_Conclusao}
+
+\newpage
+\addcontentsline{toc}{chapter}{Referências Bibliográficas}
+\bibliographystyle{ieeetr}
+\bibliography{complementar/bibliografia}
+
+\end{document}

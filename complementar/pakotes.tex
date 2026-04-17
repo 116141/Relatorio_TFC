@@ -1,0 +1,64 @@
+%Creditos para o Prof. Dr. Celestino Lopes de Barros
+%celestino.barros@docente.unicv.edu.cv 
+%4º LEIC Estudante Edmilson Gil De Carvalho Fernandes
+%edmilsongilfernandes@student.unicv.edu.cv 
+%4ºano EIC
+% Especificar a codificação UTF-8
+\UseRawInputEncoding
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+% Seus pacotes aqui
+\usepackage[toc, acronym]{glossaries}
+\usepackage{amsmath}
+\usepackage{array}
+%\usepackage[utf8]{luainputenc}
+\usepackage{hyperref}
+\usepackage[lmargin=2cm,tmargin=2cm,rmargin=2cm,bmargin=2cm]{geometry}
+\usepackage{graphicx,xcolor,multirow,multicol,indentfirst}  
+% indentfirst, enumerate
+\usepackage{booktabs}
+\usepackage{float}
+%   espasamento
+\usepackage[onehalfspacing]{setspace}
+
+%   Tradução pa Pt
+%\usepackage[portuguese]{babel}
+%
+\usepackage[portuges]{babel}
+
+\selectlanguage{portuges}
+%
+\usepackage{datetime}
+
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc}
+
+\newdateformat{monthyeardate}{ \monthname[\THEMONTH], \THEYEAR}
+%   Testo justificado e mais
+\usepackage{ragged2e}
+\usepackage[toc, acronym]{glossaries}
+\usepackage[toc]{glossaries} % Load the glossaries package
+\newglossaryentry{ovs}{
+    name={OVS},
+    description={Open vSwitch}
+}
+%   image na back
+\newcommand*{\AddEverypageHook}[1]{%
+  \AddToHook{shipout/background}{\put(1in,-1in){#1}}}
+\newcommand*{\AddThispageHook}[1]{%
+  \AddToHookNext{shipout/background}{\put(1in,-1in){#1}}}
+  
+\makeatletter 
+\disable@package@load{everypage}{}
+\makeatother
+
+\usepackage[pages=some]{background} % graphicx
+% \usepackage{lipsum}
+
+%   pa tabelas e figuras
+\usepackage{array}
+\graphicspath{ {figures/} }
+
+\usepackage{url}
+\usepackage{hyperref}
+

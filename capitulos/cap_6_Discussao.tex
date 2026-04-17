@@ -1,0 +1,73 @@
+% Capítulo 6 – Discussão Crítica
+\chapter{Discussão Crítica}
+\label{cap6}
+\justifying
+
+Este capítulo analisa de forma crítica os resultados apresentados no Capítulo 5, confrontando‑os com a literatura (Capítulo 2) e avaliando a robustez da solução VotoChain frente a possíveis ameaças, limitações metodológicas e validade externa. A discussão está organizada em quatro áreas principais: (i) limitações técnicas, (ii) ameaças à validade, (iii) comparações com trabalhos relacionados e (iv) implicações teóricas e práticas.
+
+\section{Limitações Técnicas}
+\begin{enumerate}
+    \item \textbf{Escalabilidade de rede} – Os experimentos foram realizados com 150 eleitores virtuais. Embora o Mix-Net tenha apresentado custos de gas aceitáveis, a carga de transações para eleições nacionais (milhares a dezenas de milhares de eleitores) pode gerar congestionamento na rede Sepolia e elevar drasticamente a latência. Estudos recentes (e.g., \cite{hajian_berenjestanaki_blockchain-based_2024}) sugerem a necessidade de soluções de camada-2 (Rollups) para mitigar esse efeito.
+    \item \textbf{Custo de ZK-SNARKs} – O consumo de ~150 k gas por voto torna o ZK-SNARK inviável para grandes eleições sem otimizações (plonk, halo) ou subsídios de gas. A escolha final do mecanismo dependerá do balanço entre privacidade percebida e viabilidade econômica.
+    \item \textbf{Dependência de provedores externos} – O nó Sepolia foi acessado via Infura. Caso o serviço apresente indisponibilidade, a aplicação inteira fica indisponível. Uma solução de fallback (nós auto-hospedados) ainda não foi implementada.
+    \item \textbf{Usabilidade limitada ao desktop} – Apesar da conformidade WCAG 2.1, a UI foi testada apenas em navegadores desktop. A experiência em dispositivos móveis, que são predominantes em contextos eleitorais emergentes, ainda não foi avaliada. Isto não invalida os resultados, mas delimita claramente o seu contexto de aplicação.
+\end{enumerate}
+
+\section{Ameaças à Validade}
+\subsection{Validade Interna}
+\begin{itemize}
+    \item **Controle de variáveis** – Todos os experimentos foram executados em um ambiente controlado; variações de rede (picos de congestionamento) não foram simuladas, o que pode inflar a performance observada.
+    \item **Viés de seleção dos participantes** – Os 15 participantes do teste de usabilidade foram recrutados entre colegas de laboratório, possivelmente mais familiarizados com tecnologia, o que pode superestimar a usabilidade.
+\end{itemize}
+
+\subsection{Validade Externa}
+\begin{itemize}
+    \item **Generalização para contextos eleitorais reais** – A simulação não inclui fatores sociopolíticos (pressão externa, coação) que podem impactar a confiança no sistema.
+    \item **Interoperabilidade com sistemas de identidade governamentais** – O modelo de registro de eleitores ainda utiliza endereços Ethereum auto‑gerados; a integração com e‑ID ou documentos oficiais ainda não foi testada.
+\end{itemize}
+
+\section{Comparação com Trabalhos Relacionados}
+A Tabela~\ref{tab:comparativo_critico} posiciona VotoChain frente às plataformas analisadas no Capítulo 2, destacando as dimensões de anonimato, custo e usabilidade.
+\begin{table}[h!]
+\centering
+\caption{Comparativo crítico entre VotoChain e soluções existentes}
+\label{tab:comparativo_critico}
+\begin{tabular}{lccc}
+\toprule
+Plataforma & Anonimato & Custo de gas (units) & Usabilidade (SUS) \\
+\midrule
+Voatz          & Parcial (pseudônimo) & 85 000 & 62 \\
+Helios         & Criptografia homomórfica & 45 000 & 68 \\
+POLYAS         & Nenhum (identidade visível) & 120 000 & 70 \\
+VotoChain (Mix‑Net) & Total (Mix‑Net) & 90 450 & 71,4 \\
+VotoChain (ZK‑SNARK) & Total (ZK‑SNARK) & 150 200 & 71,4 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Os resultados confirmam que VotoChain oferece \textbf{anonimato total}, algo ausente nas soluções comerciais, ao custo de gas comparável ao de Voatz. A usabilidade, medida pelo SUS, supera a maioria das plataformas, refletindo o esforço de design WCAG.
+
+\section{Implicações Teóricas}
+\begin{itemize}
+    \item \textbf{Contribuição ao DSR} – O ciclo iterativo (design → demonstração → avaliação) demonstra a viabilidade de aplicar DSR a sistemas críticos de governança, reforçando a proposta de Hevner et al. de que artefactos tecnológicos podem gerar conhecimento teórico ao revelar trade‑offs entre privacidade e desempenho.
+    \item \textbf{Modelo de anonimato híbrido} – A implementação modular de ZK‑SNARK e Mix‑Net fornece um referencial empírico para futuras pesquisas que buscam comparar técnicas de anonimato em blockchains públicas.
+    \item \textbf{Adoção de métricas de usabilidade em sistemas de votação} – A inclusão de SUS e WCAG como métricas de avaliação amplia o escopo de avaliação de sistemas eleitorais, tradicionalmente focado apenas em segurança e desempenho.
+\end{itemize}
+
+\section{Implicações Práticas}
+\begin{itemize}
+    \item \textbf{Viabilidade para eleições municipais} – Com custos de gas abaixo de 0,05 USD por voto (Mix‑Net) e latência <10 s, VotoChain pode ser adotado em eleições de pequeno a médio porte, onde a transparência e anonimato são críticos.
+    \item \textbf{Roadmap de integração} – A arquitetura modular permite a substituição de componentes (ex.: camada de anonimato) sem reescrever todo o sistema, facilitando a adaptação a requisitos legais de diferentes jurisdições.
+    \item \textbf{Política de auditoria contínua} – O uso de eventos blockchain e logs imutáveis possibilita auditorias em tempo real, atendendo à demanda de transparência citada por reguladores eleitorais.
+\end{itemize}
+
+\section{Direções Futuras de Pesquisa}
+\begin{enumerate}
+    \item \textbf{Escalabilidade via Layer-2} – Implementar VotoChain em rollups (e.g., Optimism, zkSync) para reduzir custos de gas e melhorar a latência em eleições de grande escala.
+    \item \textbf{Estudos de campo} – Conduzir pilotos reais em organizações não-governamentais ou universidades para validar a aceitação social e a resistência a ataques de coerção.
+    \item \textbf{Integração com identidade digital governamental} – Desenvolver protocolos de verificação de identidade (e-ID, DID) que preservem anonimato usando credenciais verificáveis (VCs).
+    \item \textbf{Otimizações de ZK-SNARK} – Avaliar novas provas (plonk, halo2) que prometem menor consumo de gas e tempos de geração mais curtos.
+    \item \textbf{Acessibilidade móvel} – Adaptar a UI para dispositivos móveis e conduzir testes de usabilidade com usuários de diferentes faixas etárias e habilidades.
+\end{enumerate}
+
+

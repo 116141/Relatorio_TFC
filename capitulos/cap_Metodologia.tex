@@ -1,0 +1,79 @@
+% Capítulo 4: Metodologia de Investigação
+% TFC: Blockchain em uma nova abordagem em sistema de votações eletrónicas
+% Autor: Edmilson Gil De Carvalho Fernandes
+
+\chapter{Metodologia de Investigação}\label{cap_Metodologia}
+
+\section{Introdução}
+\justifying{
+Para garantir o rigor científico e a validade dos resultados, este trabalho adota o paradigma da \textit{Design Science Research} (DSR). Esta abordagem foca-se na criação e avaliação de artefactos tecnológicos inovadores para resolver problemas práticos e teóricos identificados no ambiente social e tecnológico\cite{prodanov2013metodologia}.
+}
+
+\section{O Modelo Design Science Research (DSR)}
+A metodologia DSR escolhida segue o modelo proposto por Peffers et al. (2007), que estrutura a investigação em seis fases iterativas, conforme ilustrado na Figura~\ref{fig:fluxo_dsr}.
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[
+        node distance=0.8cm and 1cm,
+        phase/.style={rectangle, draw, fill=blue!5, text width=5cm, minimum height=0.8cm, align=center, font=\small},
+        arrow/.style={-Stealth, thick}
+    ]
+        % Phases
+        \node (f1) [phase] {\textbf{Fase 1:} Identificação do Problema \\ (Crise de confiança no voto eletrónico)};
+        \node (f2) [phase, below=of f1] {\textbf{Fase 2:} Definição de Objetivos \\ (Imutabilidade, Latência, Acessibilidade)};
+        \node (f3) [phase, below=of f2] {\textbf{Fase 3:} Design e Desenvolvimento \\ (VotoChain: React + Solidity)};
+        \node (f4) [phase, below=of f3] {\textbf{Fase 4:} Demonstração \\ (Cenário simulado em Sepolia)};
+        \node (f5) [phase, below=of f4] {\textbf{Fase 5:} Avaliação \\ (Testes de Gas e WCAG)};
+        \node (f6) [phase, below=of f5, fill=green!5] {\textbf{Fase 6:} Comunicação \\ (Dissertação de TFC)};
+
+        % Arrows
+        \draw [arrow] (f1) -- (f2);
+        \draw [arrow] (f2) -- (f3);
+        \draw [arrow] (f3) -- (f4);
+        \draw [arrow] (f4) -- (f5);
+        \draw [arrow] (f5) -- (f6);
+
+        % Iteration loops
+        \draw [arrow, dashed, bend left=45] (f5.west) to node[midway, left, font=\tiny] {Refinamento} (f3.west);
+    \end{tikzpicture}
+    \caption{Fluxo metodológico DSR adaptado ao projeto VotoChain (Baseado em Peffers et al., 2007).}
+    \label{fig:fluxo_dsr}
+\end{figure}
+
+A aplicação destas fases ao projeto VotoChain é detalhada de seguida:
+
+\subsection{Fase 1: Identificação do Problema e Motivação}
+Identificou-se que a falta de transparência em sistemas de voto eletrónico centralizados mina a confiança democrática. A motivação deste trabalho reside na utilização da imutabilidade do Blockchain para restaurar essa confiança.
+
+\subsection{Fase 2: Definição dos Objetivos da Solução}
+Com base no problema, definiram-se requisitos mensuráveis: assegurar que 100\% dos votos sejam imutáveis on-chain, garantir latência transacional inferior a 15 segundos (tempo médio de bloco da rede Ethereum) e manter custos de \textit{gas} comportáveis para uma escala institucional.
+
+\subsection{Fase 3: Design e Desenvolvimento}
+Nesta fase, criou-se o artefacto VotoChain. A arquitetura foi desenhada para separar a validação de identidade (off-chain) da persistência do voto (on-chain), utilizando Solidity para a lógica de negócio e React para a interface de utilizador.
+
+\subsection{Fase 4: Demonstração}
+A eficácia do artefacto foi demonstrada através da criação de um cenário de eleição simulado, onde diversos "eleitores" interagiram com a aplicação via MetaMask, submetendo votos reais para a rede de teste Sepolia.
+
+\subsection{Fase 5: Avaliação}
+Esta é a fase crítica onde se analisam os resultados. O artefacto foi avaliado através de métricas de desempenho (consumo de \textit{gas}) e testes de usabilidade baseados nos princípios WCAG, verificando se os objetivos da Fase 2 foram atingidos.
+
+\subsection{Fase 6: Comunicação}
+A comunicação dos resultados é realizada através desta dissertação, detalhando as contribuições técnicas e as lições aprendidas sobre a viabilidade de sistemas eleitorais descentralizados. Este enquadramento metodológico assegura que as decisões técnicas tomadas ao longo do projeto seguem critérios científicos explícitos, reduzindo vieses subjetivos.
+
+\section{Justificação das Escolhas Tecnológicas}
+
+A seleção das ferramentas seguiu critérios de maturidade, segurança e interoperabilidade:
+\begin{enumerate}
+    \item \textbf{Ethereum / Solidity:} Escolhida por ser a plataforma de \textit{Smart Contracts} mais resiliente e com a maior comunidade de auditores de segurança do mundo.
+    \item \textbf{React.js:} Justifica-se pela sua arquitetura baseada em componentes, facilitando a implementação de interfaces acessíveis e responsivas.
+    \item \textbf{Ethers.js:} Utilizada para a ponte entre o \textit{Frontend} e a \textit{Blockchain}, permitindo uma interação segura e assíncrona.
+\end{enumerate}
+
+\section{Critérios de Validação}
+Para responder à exigência de rigor do arguente, a validação do VotoChain não se limita ao seu funcionamento básico, mas sim a:
+\begin{itemize}
+    \item \textbf{Integridade dos Dados:} Confirmação de que o \textit{hash} do voto no recibo coincide com o registo on-chain.
+    \item \textbf{Análise de Custos:} Comparação dos custos de transação para diferentes tipos de eleições.
+    \item \textbf{Acessibilidade Digital:} Verificação manual e automática do cumprimento das diretrizes de acessibilidade.
+\end{itemize}

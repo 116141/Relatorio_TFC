@@ -1,0 +1,27 @@
+# LaTeX
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.out
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.acn
+*.glo
+*.ist
+*.blg
+*.bbl
+*.tdo
+*.bak
+
+# Workspace
+.gemini/
+.vscode/
+
+# Ignore artifacts summary from Antigravity/Gemini (if any)
+analise_feedback.md
+implementation_plan.md
+task.md
+walkthrough.md

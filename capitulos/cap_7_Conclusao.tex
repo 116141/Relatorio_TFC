@@ -1,0 +1,51 @@
+% Capítulo 7 – Conclusão e Trabalhos Futuros
+\chapter{Conclusão e Trabalhos Futuros}
+\label{cap7}
+\justifying
+
+Os resultados obtidos permitem responder positivamente ao problema de investigação formulado, demonstrando como o VotoChain se alinha ao paradigma \textbf{Design Science Research (DSR)} e às exigências de rigor académico. A seguir são apresentados os principais pontos de conclusão, a resposta ao problema de investigação e as direções para continuidade da pesquisa.
+
+\section{Síntese dos Resultados}
+A partir dos experimentos descritos nos capítulos anteriores, obtivemos as seguintes evidências:
+\begin{enumerate}
+    \item \textbf{Integração de Smart Contracts e anonimato} – O protótipo VotoChain demonstrou ser capaz de registrar votos de forma imutável, garantir anonimato verificável (via ZK-SNARK ou Mix-Net) e produzir auditoria pública em tempo real.
+    \item \textbf{Desempenho aceitável para eleições de pequeno a médio porte} – O mecanismo Mix-Net apresentou custo de gas médio de 90 450 units (≈0,045 USD) e latência de 9 s, valores competitivos em relação a soluções comerciais (Voatz, Helios, POLYAS).
+    \item \textbf{Usabilidade e acessibilidade} – A interface React, desenvolvida segundo WCAG 2.1, alcançou um SUS de 71,4 e 92 % de conformidade WCAG, superando a maioria das plataformas existentes.
+    \item \textbf{Validação dos objetivos} – Todos os objetivos gerais e específicos foram confirmados, tanto quantitativamente (gas, latência, taxa de falhas) quanto qualitativamente (usabilidade, percepção de anonimato).
+\end{enumerate}
+
+\section{Resposta ao Problema de Investigação}
+O problema central – *"Como integrar Smart Contracts e arquiteturas Web3 de forma a garantir, simultaneamente, a integridade imutável do voto, o anonimato do eleitor e a transparência total do apuramento, sem depender de uma autoridade central de confiança?"* – foi respondido afirmativamente. O artefacto VotoChain oferece uma solução completa que cumpre os três requisitos simultaneamente, comprovada por experimentação prática e avaliação rigorosa.
+
+\section{Contribuições Científicas e Técnicas}
+\begin{itemize}
+    \item \textbf{Metodológica} – Aplicação do DSR para desenvolver e validar um artefacto de votação eletrónica, demonstrando a viabilidade de ciclos iterativos de design, demonstração e avaliação em contextos de governança.
+    \item \textbf{Técnica} – Implementação de uma arquitetura modular que permite a troca entre ZK-SNARK e Mix-Net, oferecendo um referencial empírico para comparações de técnicas de anonimato em blockchains próximas.
+    \item \textbf{Social} – Interface acessível que cumpre WCAG 2.1, contribuindo para a inclusão digital de eleitores com diferentes necessidades.
+    \item \textbf{Estado da Arte} – Análise crítica que evidencia lacunas (escalabilidade de ZK-SNARK, auditoria em tempo real) e posiciona VotoChain como avançado em anonimato e transparência.
+\end{itemize}
+
+\section{Limitações do Estudo}
+Apesar dos resultados positivos, reconhecemos as seguintes limitações:
+\begin{enumerate}
+    \item Experimentos limitados a 150 eleitores; a escalabilidade para eleições nacionais ainda não foi testada.
+    \item Dependência de um provedor de nós (Infura) que pode representar um ponto único de falha.
+    \item Avaliação de usabilidade restrita a ambientes desktop; dispositivos móveis ainda não foram avaliados.
+    \item Integração com sistemas de identidade governamentais (e‑ID, DID) permanece como trabalho futuro.
+\end{enumerate}
+
+\section{Trabalhos Futuros}
+Com base nas limitações identificadas, propomos as seguintes linhas de investigação:
+\begin{enumerate}
+    \item \textbf{Escalabilidade via Layer-2} – Migrar VotoChain para rollups (Optimism, zkSync) ou sidechains para reduzir custos de gas e melhorar a latência em eleições de grande escala.
+    \item \textbf{Pilotos reais} – Implementar pilotos em organizações não-governamentais ou universidades para validar a aceitação social e a resistência a coerção.
+    \item \textbf{Integração de identidade digital} – Desenvolver protocolos que conectem credenciais verificáveis (VCs) a endereços Ethereum, preservando anonimato.
+    \item \textbf{Otimizações de ZK-SNARK} – Avaliar novas provas (plonk, halo2) que prometem menor consumo de gas e tempos de geração mais curtos.
+    \item \textbf{Acessibilidade móvel} – Adaptar a UI para dispositivos móveis e conduzir testes de usabilidade com usuários de diferentes faixas etárias e habilidades.
+    \item \textbf{Auditoria contínua} – Implementar dashboards de monitoramento em tempo real que consumam eventos blockchain para auditoria pública.
+\end{enumerate}
+
+\section{Considerações Finais}
+O presente estudo demonstra que a combinação de blockchain pública, técnicas avançadas de anonimato e design centrado no usuário pode produzir um sistema de votação eletrónica que atende aos requisitos de integridade, anonimato e transparência exigidos por contextos democráticos modernos. Ao seguir rigorosamente o método DSR, o trabalho não só entrega um artefacto funcional, mas também gera conhecimento científico que pode ser reutilizado e ampliado por futuros investigadores e desenvolvedores.
+
+

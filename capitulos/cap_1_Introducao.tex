@@ -1,0 +1,96 @@
+% Capítulo 1 – Introdução (copiado de cap_Intro.tex)
+\chapter{Introdução}\label{cap1}
+\justifying
+A democracia é definida como o direito das pessoas de escolherem os seus líderes. A votação é um processo crítico que permite às pessoas elegerem o seu líder governamental. O sistema eleitoral deve ser democrático, independente e imparcial. Como resultado, deve ser um procedimento transparente e seguro que permita a todos partilhar livremente o seu ponto de vista.\cite{alvi_dvtchain_2022}
+
+Dito isso, e com a evolução tecnológica tem impulsionado mudanças significativas em diversos setores da sociedade, e o sistema de votações eletrónicas não fica de fora.
+
+Existem diferentes meios de votação pelo mundo, sendo o mais comum a votação em papel. Este sistema utiliza cédulas físicas que o eleitor marca em centros designados, sob observação de auditores, mas mantendo o sigilo do voto. As cédulas são depositadas em urnas e contadas manualmente, um processo demorado que exige recursos humanos substanciais e acarreta riscos de segurança, além de dificuldades de armazenamento e acessibilidade para idosos ou pessoas com mobilidade reduzida.\cite{hajian_berenjestanaki_blockchain-based_2024}
+
+Considerando as desvantagens acima mencionadas, os métodos de votação evoluíram muito com o avanço das Tecnologias de Informação e Comunicação (TIC).
+
+Nas últimas décadas, houve uma crescente busca por métodos mais eficientes, seguros e transparentes para acompanhar os processos eleitorais. Nesse contexto, a tecnologia Blockchain surge como uma solução promissora para melhorar a integridade e confiabilidade das votações eletrónicas.
+
+\newpage
+
+\section{Enquadramento e Justificação}
+
+A tecnologia Blockchain tem sido amplamente reconhecida pela sua capacidade de fornecer transparência, segurança e imutabilidade. Estas características tornam a Blockchain uma candidata promissora para resolver muitos dos desafios enfrentados pelos sistemas de votação electrónica, como a manipulação de votos, a falta de transparência e a vulnerabilidade a ataques cibernéticos.
+
+O sistema de votação electrónica actual enfrenta vários desafios, incluindo a falta de confiança do público, a possibilidade de fraude e a falta de transparência no processo de votação. A tecnologia Blockchain, com a sua natureza descentralizada e imutável, oferece uma solução potencial para estes problemas.
+
+Este projecto propõe uma nova abordagem para o sistema de votação electrónica utilizando a tecnologia Blockchain. O objectivo é desenvolver um sistema de votação que seja seguro, transparente e imune a fraudes. Acreditamos que a implementação da tecnologia Blockchain no sistema de votação electrónica pode aumentar a confiança do público no processo de votação, garantindo que cada voto seja contado correctamente e que o processo de votação seja transparente e verificável.
+
+Além disso, este trabalho contribuirá para a literatura existente sobre o uso da tecnologia Blockchain em sistemas de votação electrónica, fornecendo uma análise abrangente dos desafios enfrentados e das soluções propostas. Esperamos que este trabalho sirva como um recurso valioso para investigadores e profissionais interessados em explorar o potencial da tecnologia Blockchain para melhorar os sistemas de votação electrónica.
+
+% Problema de Investigação
+\section{Problema de Investigação}
+
+A digitalização dos processos eleitorais tem impulsionado a adoção de sistemas de votação eletrónica centralizados. Embora esses sistemas aumentem a eficiência logística, apresentam três falhas críticas:
+
+\begin{enumerate}
+    \item \textbf{Opacidade algorítmica}: os algoritmos que contabilizam e validam os votos são proprietários, impedindo auditorias independentes.
+    \item \textbf{Vulnerabilidade a ataques internos}: a centralização de dados e chaves criptográficas cria um ponto único de falha, facilitando a manipulação de resultados.
+    \item \textbf{Ausência de anonimato verificável}: a maioria das soluções não garante que o voto seja anônimo ao mesmo tempo em que permite rastreabilidade para fins de auditoria.
+\end{enumerate}
+
+Consequentemente, o problema central desta investigação é:
+
+\begin{quote}
+\textit{Como integrar Smart Contracts e arquiteturas Web3 de forma a garantir, simultaneamente, a integridade imutável do voto, o anonimato do eleitor e a transparência total do apuramento, sem depender de uma autoridade central de confiança?}
+\end{quote}
+
+Esta questão orienta a busca por um artefacto (VotoChain) que supra as limitações dos sistemas atuais, oferecendo:
+\begin{itemize}
+    \item \textbf{Descentralização total} dos registros de voto mediante blockchain pública (Ethereum Sepolia);
+    \item \textbf{Anonimato criptográfico} suportado por técnicas de zero-knowledge proof (ZKP) ou mix-nets;
+    \item \textbf{Auditabilidade pública} por meio de contratos inteligentes verificáveis e logs imutáveis.
+\end{itemize}
+
+% Objetivos e Contribuições
+\section{Objetivos e Contribuições}
+
+\subsection{Objetivo Geral}
+Desenvolver e avaliar um protótipo de sistema de votação eletrónica (VotoChain) baseado na tecnologia blockchain (EVM) que assegure a viabilidade técnica de:
+\begin{enumerate}
+    \item Integridade e imutabilidade dos votos;
+    \item Anonimato verificável do eleitor;
+    \item Transparência e auditabilidade pública sem a necessidade de uma autoridade central.
+\end{enumerate}
+
+\subsection{Objetivos Específicos}
+\begin{enumerate}
+    \item Revisão sistemática da literatura para mapear vulnerabilidades e mecanismos de segurança de sistemas de votação eletrónica existentes, identificando lacunas nas áreas de anonimato, auditabilidade e descentralização.
+    \item Projeto e implementação de smart contracts robustos em Solidity que gerenciem o ciclo de vida da eleição (registro, votação, apuração) e garantam a unicidade do voto por meio de identidades digitais.
+    \item Integração de um mecanismo de anonimato criptográfico (ZKP ou mix‑nets) para dissociar a identidade do eleitor do voto, mantendo a verificabilidade.
+    \item Desenvolvimento de uma interface acessível (React + Ethers.js) que siga as diretrizes WCAG 2.1, permitindo a participação inclusiva de usuários com diferentes necessidades.
+    \item Avaliação quantitativa dos custos de \textit{gas}, latência de transação e taxa de falhas em ambiente de teste (Sepolia) e comparação com soluções comerciais (Voatz, Helios, POLYAS).
+    \item Validação qualitativa por meio de testes de usabilidade com usuários reais, coletando feedback sobre confiança, percepção de segurança e experiência de voto.
+\end{enumerate}
+
+\subsection{Contribuições}
+\begin{enumerate}
+    \item \textbf{Metodológica}: aplicação do framework \textit{Design Science Research} (DSR) para o desenvolvimento rigoroso de artefatos tecnológicos em contextos eleitorais.
+    \item \textbf{Técnica}: implementação de um modelo híbrido de autenticação que associa identidades institucionais a endereços Ethereum, aliado a um mecanismo de anonimato criptográfico.
+    \item \textbf{Social}: demonstração de design universal e acessibilidade digital em um sistema de votação Web3, reduzindo barreiras de participação.
+    \item \textbf{Estado da Arte}: análise comparativa crítica entre VotoChain e soluções existentes (Voatz, Helios, POLYAS), evidenciando requisitos ainda não atendidos (ex.: escalabilidade de ZKP, auditoria em tempo real).
+\end{enumerate}
+
+% Metodologia de investigação
+\section{Metodologia de Investigação}
+
+Para que um conhecimento possa ser considerado científico, torna‑se necessário identificar as operações mentais e técnicas que possibilitam a sua verificação (GIL, 2008).\cite{prodanov2013metodologia} O principal objetivo da investigação científica é, justamente, o de saber se essa sugestão apresentada, isto é, a hipótese, enquanto enunciado objetivo e independente do pesquisador, será corroborada ou falseada. E embora corroborada, ela sempre manterá o caráter hipotético. Para \textit{Kerlinger}, “as hipóteses são uma ferramenta poderosa para o avanço do conhecimento porque, embora formuladas pelo homem, podem ser testadas e mostradas como provavelmente corretas ou incorretas, à parte dos valores e crenças do homem” (1985, p. 40).
+
+Apresenta‑se aqui um projeto que tem a função de \textbf{"Utilização de Blockchain em uma nova abordagem em sistema de votações eletrónicas"}.
+
+% Estrutura de trabalho
+\section{Estrutura de Trabalho}
+\begin{description}
+    \item[Capítulo I: Introdução] Apresenta o contexto, motivação, problema de investigação, objetivos e as contribuições do trabalho.
+    \item[Capítulo II: Estado da Arte] Fornece uma revisão crítica da literatura sobre plataformas de votação blockchain, técnicas de anonimato e análise de desempenho.
+    \item[Capítulo III: Metodologia de Investigação] Detalha a aplicação do framework \textit{Design Science Research} (DSR) e as fases de desenvolvimento do artefacto.
+    \item[Capítulo IV: Proposta de Arquitetura e Design] Descreve a arquitetura técnica do VotoChain, os smart contracts, o módulo de anonimato e o design de interface (WCAG 2.1).
+    \item[Capítulo V: Resultados e Validação] Apresenta os dados quantitativos (gas, latência) e qualitativos (SUS, acessibilidade) obtidos nos experimentos.
+    \item[Capítulo VI: Discussão Crítica] Analisa os resultados frente às ameaças à validade, limitações técnicas e comparações com o estado da arte.
+    \item[Capítulo VII: Conclusão e Trabalhos Futuros] Sintetiza as conclusões, contribuições e propõe um roadmap para evoluções futuras do artefacto.
+\end{description}
