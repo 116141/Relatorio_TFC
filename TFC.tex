@@ -3,7 +3,7 @@
 % 4º ano EIC
 \documentclass[a4paper,12pt]{report}
 \usepackage[utf8]{inputenc}
-\usepackage[hidelinks]{hyperref}
+\usepackage[hidelinks, unicode, plainpages=false, pdfpagelabels, hypertexnames=false]{hyperref}
 \DeclareUnicodeCharacter{202F}{~}
 \DeclareUnicodeCharacter{2194}{\ensuremath{\leftrightarrow}}
 \DeclareUnicodeCharacter{2248}{\ensuremath{\approx}}
@@ -23,13 +23,13 @@
 \usepackage{booktabs}
 \usepackage{float}
 \usepackage[onehalfspacing]{setspace}
-\usepackage[portuges]{babel}
+\usepackage[portuguese]{babel}
 \usepackage{datetime}
 \usepackage[T1]{fontenc}
 \usepackage{ragged2e}
 \usepackage{url}
 
-\selectlanguage{portuges}
+\selectlanguage{portuguese}
 
 \newdateformat{monthyeardate}{ \monthname[\THEMONTH], \THEYEAR}
 
@@ -46,6 +46,7 @@
 
 \begin{document}
 
+\hypersetup{pageanchor=false}
 \pagenumbering{gobble}
 
 % Capa
@@ -89,7 +90,7 @@
     \begin{figure}
         \centering
         \includegraphics[width=0.5\linewidth]{figuras/unicv_fct.png} % Verifique se o caminho está correto
-        \label{fig:enter-label}
+        \label{fig:logocapa}
     \end{figure}
     \begin{minipage}{.9\textwidth}
         \centering
@@ -163,7 +164,7 @@
 \end{center}
 
 \newpage
-
+\hypersetup{pageanchor=true}
 \pagenumbering{roman}
 
 % Incluir agradecimentos
@@ -204,6 +205,7 @@
  % contents={\includegraphics[scale=1]{figuras/tfc background.jpg}}}
 
 % Incluir capítulos reorganizados
+\pagenumbering{arabic}
 \input{capitulos/cap_1_Introducao}
 \newpage
 \input{capitulos/cap_2_EstadoDaArte}
@@ -221,6 +223,7 @@
 \newpage
 \addcontentsline{toc}{chapter}{Referências Bibliográficas}
 \bibliographystyle{ieeetr}
+\nocite{*}
 \bibliography{complementar/bibliografia}
 
 \end{document}

@@ -7,9 +7,9 @@ Este capítulo apresenta os resultados obtidos a partir dos experimentos descrit
 
 \section{Configuração Experimental}
 \begin{itemize}
-    \item \textbf{Rede Blockchain} – Ethereum Sepolia (acesso via provedor Infura). Todos os contratos foram compilados com Solidity \textasciicircum 0.8.20 e implantados usando Hardhat.
+    \item \textbf{Rede Blockchain} – Ethereum Sepolia (acesso via provedor Infura). Todos os contratos foram compilados com Solidity \textasciicircum 0.8.20 e implementados usando Hardhat.
     \item \textbf{Ambiente de Teste} – Máquina virtual Windows 10, 16 GB RAM, CPU i7-9700K, Node.js v18, Hardhat v2.22.
-    \item \textbf{Cenário de Eleição} – 150 eleitores virtuais (endereços Ethereum) registrados no contrato `RegistroEleitor`. Cada eleitor submete um voto único utilizando duas variantes de anonimato:
+    \item \textbf{Cenário de Eleição} – 150 eleitores virtuais (endereços Ethereum) registados no contrato `RegistoEleitor`. Cada eleitor submete um voto único utilizando duas variantes de anonimato:
     \begin{enumerate}
         \item \textbf{ZK-SNARK} – proof gerado off-chain com `snarkjs`.
         \item \textbf{Mix-Net} – voto encaminhado por três nós de mistura controlados por contratos de relay.
@@ -20,9 +20,9 @@ Este capítulo apresenta os resultados obtidos a partir dos experimentos descrit
 \section{Avaliação Quantitativa}
 \subsection{Custo de \textit{gas}}
 A Tabela~\ref{tab:gas} resume o consumo médio de gas por voto para cada mecanismo de anonimato.
-\begin{table}[h!]
+\begin{table}[ht!]
 \centering
-\caption{Consumo médio de gas por voto}
+\caption{Consumo m{\'e}dio de gas por voto}
 \label{tab:gas}
 \begin{tabular}{lcc}
 \toprule
@@ -36,7 +36,7 @@ Mix‑Net   &  90 450 & 0,045 \\
 
 \subsection{Latência de Confirmação}
 A latência foi medida como o intervalo entre a submissão da transação (via front‑end) e a inclusão no bloco. Os resultados (em segundos) são mostrados na Figura~\ref{fig:latency}.
-\begin{figure}[h!]
+\begin{figure}[ht!]
 \centering
 \begin{tikzpicture}
     \begin{axis}[ybar, ylabel={Latência (s)}, symbolic x coords={ZK‑SNARK,Mix‑Net}, xtick=data, nodes near coords, ymin=0, ymax=15]
@@ -49,7 +49,7 @@ A latência foi medida como o intervalo entre a submissão da transação (via f
 
 \subsection{Taxa de Falhas}
 A taxa de falhas corresponde ao percentual de transações revertidas ou abortadas por `out‑of‑gas`. Conforme a Tabela~\ref{tab:failures}:
-\begin{table}[h!]
+\begin{table}[ht!]
 \centering
 \caption{Taxa de falhas por mecanismo}
 \label{tab:failures}
@@ -76,13 +76,13 @@ A auditoria de acessibilidade verificou 23 dos 25 critérios de nível AA. As du
 A conformidade final foi \textbf{92\%}.
 
 \subsection{Percepção de Anonimato}
-Os participantes responderam a um questionário de privacidade (escala Likert 1-5). A média de confiança de anonimato foi \textbf{4,3} para o mecanismo ZK-SNARK e \textbf{4,0} para Mix-Net, indicando que ambos são percebidos como suficientemente anônimos, com ligeira preferência ao ZK-SNARK.
+Os participantes responderam a um questionário de privacidade (escala Likert 1-5). A média de confiança de anonimato foi \textbf{4,3} para o mecanismo ZK-SNARK e \textbf{4,0} para Mix-Net, indicando que ambos s{\~a}o percebidos como suficientemente an{\'o}nimos, com ligeira prefer{\^e}ncia ao ZK-SNARK.
 
 \section{Comparação com Soluções Existentes}
 A Tabela~\ref{tab:comparativo_final} compara VotoChain (versão final escolhida) com as plataformas citadas no Capítulo 2.
-\begin{table}[h!]
+\begin{table}[ht!]
 \centering
-\caption{Comparativo final entre VotoChain e soluções comerciais}
+\caption{Comparativo final entre VotoChain e solu{\c{c}}{\~o}es comerciais}
 \label{tab:comparativo_final}
 \begin{tabular}{lccc}
 \toprule

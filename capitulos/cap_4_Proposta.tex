@@ -8,12 +8,12 @@ Este capítulo descreve a arquitetura técnica do artefacto \textbf{VotoChain} e
 \section{Visão Geral da Arquitetura}
 A solução está estruturada em três camadas principais (Figura~\ref{fig:arquitetura}):
 \begin{enumerate}
-    \item \textbf{Camada de Dados (Blockchain)} – rede pública Ethereum Sepolia onde residem os smart contracts responsáveis pelo registro de eleitores, submissão de votos e apuração.
+    \item \textbf{Camada de Dados (Blockchain)} – rede pública Ethereum Sepolia onde residem os smart contracts responsáveis pelo registo de eleitores, submissão de votos e apuramento. Os Smart Contracts, conceito introduzido por Nick Szabo em 1997\cite{szabo1997formalizing}, são a base lógica do VotoChain. No nosso sistema, os contratos residem na \textbf{EVM} (Ethereum Virtual Machine) e são escritos em \textbf{Solidity}.
     \item \textbf{Camada de Anonimato} – módulo que dissocia a identidade do eleitor do voto usando \textbf{Zero-Knowledge Proofs (zk-SNARKs)} ou \textbf{Mix-Nets} (seleção feita após avaliação de custo/benefício).
-    \item \textbf{Camada de Aplicação (Frontend)} – interface web desenvolvida em React + Ethers.js, projetada segundo WCAG 2.1 (nível AA) para garantir acessibilidade.
+    \item \textbf{Camada de Aplicação (Frontend)} – interface web desenvolvida em React + Ethers.js, projetada segundo WCAG 2.1 (nível AA) para garantir acessibilidade. O design universal, proposto por Mace (1997)\cite{universal_design}, foi adotado como princípio norteador. A camada de apresentação é o ponto de entrada para o eleitor. Desenvolvida em \textbf{React.js}, a interface foi projetada seguindo os princípios de acessibilidade \textbf{WCAG 2.1}\cite{accessibility_principles}.
 \end{enumerate}
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
 \centering
 \includegraphics[width=0.8\textwidth]{figuras/Arquitectura_Sistema_VotoChain.png}
 \caption{Arquitetura detalhada de três camadas do VotoChain: Frontend, Anonimato e Blockchain.}
@@ -23,7 +23,7 @@ A solução está estruturada em três camadas principais (Figura~\ref{fig:arqui
 \section{Componentes de Smart Contracts}
 Os contratos são organizados em três módulos inter‑ligados:
 \begin{enumerate}
-    \item \textbf{RegistroEleitor.sol}\ – gerencia o cadastro de identidades digitais (endereço Ethereum ↔ identidade institucional). Utiliza um mapeamento `address => bytes32` e verifica a unicidade via `require(!registered[msg.sender])`.
+    \item \textbf{RegistoEleitor.sol}\ – gere o cadastro de identidades digitais (endereço Ethereum ↔ identidade institucional). Utiliza um mapeamento `address => bytes32` e verifica a unicidade via `require(!registered[msg.sender])`.
     \item \textbf{VotoAnonimo.sol}\ – recebe o voto anonimizado (hash ou proof) e o armazena em uma estrutura `mapping(uint256 => bytes32) votes`. Cada voto recebe um identificador incremental e não pode ser alterado (`immutable`).
     \item \textbf{Apuracao.sol}\ – contabiliza os votos ao final da eleição, emitindo um evento `ResultPublished(uint256 totalYes, uint256 totalNo)`. O contrato inclui funções de *emergency stop* (`circuitBreaker`) para garantir a integridade em caso de ataque.
 \end{enumerate}
@@ -50,7 +50,7 @@ A UI segue os princípios de design universal:
 \section{Diagrama de Casos de Uso}
 A Figura~\ref{fig:casos_uso} detalha as interações entre os atores (Eleitor e Administrador) e o sistema.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
 \centering
 \includegraphics[width=0.7\textwidth]{figuras/Diagrama_Casos_de_Uso_VotoChain.png}
 \caption{Diagrama de Casos de Uso do sistema VotoChain.}
@@ -60,7 +60,7 @@ A Figura~\ref{fig:casos_uso} detalha as interações entre os atores (Eleitor e 
 \section{Fluxo de Votação – Diagrama de Sequência}
 O fluxo detalhado de mensagens entre os componentes durante o ato de votar é apresentado na Figura~\ref{fig:sequencia}.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
 \centering
 \includegraphics[width=0.9\textwidth]{figuras/Diagrama_Sequencia_VotoChain.png}
 \caption{Diagrama de Sequência para submissão de voto anonimizado.}
@@ -70,7 +70,7 @@ O fluxo detalhado de mensagens entre os componentes durante o ato de votar é ap
 \section{Diagrama de Classes}
 A estrutura de dados e as relações entre os Smart Contracts e módulos de suporte são ilustradas no diagrama de classes da Figura~\ref{fig:classes}.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
 \centering
 \includegraphics[width=0.9\textwidth]{figuras/Diagrama_Classes_VotoChain.png}
 \caption{Diagrama de Classes dos Smart Contracts e Módulos do Sistema.}
@@ -86,7 +86,7 @@ A estrutura de dados e as relações entre os Smart Contracts e módulos de supo
 
 \section{Roadmap de Implementação}
 \begin{enumerate}
-    \item Implementar `RegistroEleitor.sol` e `VotoAnonimo.sol` com suporte a ZK‑SNARKs.
+    \item Implementar `RegistoEleitor.sol` e `VotoAnonimo.sol` com suporte a ZK‑SNARKs.
     \item Desenvolver protótipo de Mix‑Net e integrar ao contrato `VotoAnonimo.sol`.
     \item Construir UI React conforme WCAG 2.1 e conectar ao contrato via Ethers.js.
     \item Executar testes de carga (100‑200 eleitores) em Sepolia.

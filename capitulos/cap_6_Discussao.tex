@@ -1,14 +1,13 @@
-% Capítulo 6 – Discussão Crítica
-\chapter{Discussão Crítica}
+\chapter{Discuss{\~a}o Cr{\'i}tica}
 \label{cap6}
 \justifying
 
-Este capítulo analisa de forma crítica os resultados apresentados no Capítulo 5, confrontando‑os com a literatura (Capítulo 2) e avaliando a robustez da solução VotoChain frente a possíveis ameaças, limitações metodológicas e validade externa. A discussão está organizada em quatro áreas principais: (i) limitações técnicas, (ii) ameaças à validade, (iii) comparações com trabalhos relacionados e (iv) implicações teóricas e práticas.
+{\sloppy Este cap{\'i}tulo analisa de forma cr{\'i}tica os resultados apresentados no Cap{\'i}tulo 5, confrontando-os com a literatura (Cap{\'i}tulo 2) e avaliando a robustez da solu{\c{c}}{\~o}o VotoChain frente a poss{\'i}veis amea{\c{c}}as, limita{\c{c}}{\~o}es metodol{\'o}gicas e validade externa. A discuss{\~a}o est{\'a} organizada em quatro {\'a}reas principais: (i) limita{\c{c}}{\~o}es t{\'e}cnicas, (ii) amea{\c{c}}as {\`a} validade, (iii) compara{\c{c}}{\~o}es com trabalhos relacionados e (iv) implica{\c{c}}{\~o}es te{\'o}ricas e pr{\'a}ticas.\par}
 
 \section{Limitações Técnicas}
 \begin{enumerate}
     \item \textbf{Escalabilidade de rede} – Os experimentos foram realizados com 150 eleitores virtuais. Embora o Mix-Net tenha apresentado custos de gas aceitáveis, a carga de transações para eleições nacionais (milhares a dezenas de milhares de eleitores) pode gerar congestionamento na rede Sepolia e elevar drasticamente a latência. Estudos recentes (e.g., \cite{hajian_berenjestanaki_blockchain-based_2024}) sugerem a necessidade de soluções de camada-2 (Rollups) para mitigar esse efeito.
-    \item \textbf{Custo de ZK-SNARKs} – O consumo de ~150 k gas por voto torna o ZK-SNARK inviável para grandes eleições sem otimizações (plonk, halo) ou subsídios de gas. A escolha final do mecanismo dependerá do balanço entre privacidade percebida e viabilidade econômica.
+    \item \textbf{Custo de ZK-SNARKs} – O consumo de ~150 k gas por voto torna o ZK-SNARK invi{\'a}vel para grandes elei{\c{c}}{\~o}es sem otimiza{\c{c}}{\~o}es (plonk, halo) ou subs{\'i}dios de gas. A escolha final do mecanismo depender{\'a} do balan{\c{c}}o entre privacidade percebida e viabilidade econ{\'o}mica.
     \item \textbf{Dependência de provedores externos} – O nó Sepolia foi acessado via Infura. Caso o serviço apresente indisponibilidade, a aplicação inteira fica indisponível. Uma solução de fallback (nós auto-hospedados) ainda não foi implementada.
     \item \textbf{Usabilidade limitada ao desktop} – Apesar da conformidade WCAG 2.1, a UI foi testada apenas em navegadores desktop. A experiência em dispositivos móveis, que são predominantes em contextos eleitorais emergentes, ainda não foi avaliada. Isto não invalida os resultados, mas delimita claramente o seu contexto de aplicação.
 \end{enumerate}
@@ -16,33 +15,35 @@ Este capítulo analisa de forma crítica os resultados apresentados no Capítulo
 \section{Ameaças à Validade}
 \subsection{Validade Interna}
 \begin{itemize}
-    \item **Controle de variáveis** – Todos os experimentos foram executados em um ambiente controlado; variações de rede (picos de congestionamento) não foram simuladas, o que pode inflar a performance observada.
+    \item **Controlo de vari{\'a}veis** – Todos os experimentos foram executados em um ambiente controlado; varia{\c{c}}{\~o}es de rede (picos de congestionamento) n{\~a}o foram simuladas, o que pode inflar a performance observada.
     \item **Viés de seleção dos participantes** – Os 15 participantes do teste de usabilidade foram recrutados entre colegas de laboratório, possivelmente mais familiarizados com tecnologia, o que pode superestimar a usabilidade.
 \end{itemize}
 
 \subsection{Validade Externa}
 \begin{itemize}
     \item **Generalização para contextos eleitorais reais** – A simulação não inclui fatores sociopolíticos (pressão externa, coação) que podem impactar a confiança no sistema.
-    \item **Interoperabilidade com sistemas de identidade governamentais** – O modelo de registro de eleitores ainda utiliza endereços Ethereum auto‑gerados; a integração com e‑ID ou documentos oficiais ainda não foi testada.
+    \item \textbf{Interoperabilidade com sistemas de identidade governamentais} – O modelo de registo de eleitores ainda utiliza endereços Ethereum auto‑gerados; a integração com e‑ID ou documentos oficiais ainda não foi testada.
 \end{itemize}
 
 \section{Comparação com Trabalhos Relacionados}
 A Tabela~\ref{tab:comparativo_critico} posiciona VotoChain frente às plataformas analisadas no Capítulo 2, destacando as dimensões de anonimato, custo e usabilidade.
 \begin{table}[h!]
 \centering
-\caption{Comparativo crítico entre VotoChain e soluções existentes}
+\caption{Comparativo cr{\'i}tico entre VotoChain e solu{\c{c}}{\~o}es existentes}
 \label{tab:comparativo_critico}
+\resizebox{\textwidth}{!}{
 \begin{tabular}{lccc}
 \toprule
 Plataforma & Anonimato & Custo de gas (units) & Usabilidade (SUS) \\
 \midrule
-Voatz          & Parcial (pseudônimo) & 85 000 & 62 \\
-Helios         & Criptografia homomórfica & 45 000 & 68 \\
-POLYAS         & Nenhum (identidade visível) & 120 000 & 70 \\
+Voatz          & Parcial (pseud{\'o}nimo) & 85 000 & 62 \\
+Helios         & Criptografia homom{\'o}rfica & 45 000 & 68 \\
+POLYAS         & Nenhum (identidade vis{\'i}vel) & 120 000 & 70 \\
 VotoChain (Mix‑Net) & Total (Mix‑Net) & 90 450 & 71,4 \\
 VotoChain (ZK‑SNARK) & Total (ZK‑SNARK) & 150 200 & 71,4 \\
 \bottomrule
 \end{tabular}
+}
 \end{table}
 
 Os resultados confirmam que VotoChain oferece \textbf{anonimato total}, algo ausente nas soluções comerciais, ao custo de gas comparável ao de Voatz. A usabilidade, medida pelo SUS, supera a maioria das plataformas, refletindo o esforço de design WCAG.
@@ -56,9 +57,9 @@ Os resultados confirmam que VotoChain oferece \textbf{anonimato total}, algo aus
 
 \section{Implicações Práticas}
 \begin{itemize}
-    \item \textbf{Viabilidade para eleições municipais} – Com custos de gas abaixo de 0,05 USD por voto (Mix‑Net) e latência <10 s, VotoChain pode ser adotado em eleições de pequeno a médio porte, onde a transparência e anonimato são críticos.
+    \item \textbf{Viabilidade para elei{\c{c}}{\~o}es municipais} – Com custos de gas abaixo de 0,05 USD por voto (Mix‑Net) e lat{\^e}ncia <10 s, VotoChain pode ser adotado em elei{\c{c}}{\~o}es de pequeno a m{\'e}dio porte, onde a transpar{\^e}ncia e an{\'o}nimo s{\~a}o cr{\'i}ticos.
     \item \textbf{Roadmap de integração} – A arquitetura modular permite a substituição de componentes (ex.: camada de anonimato) sem reescrever todo o sistema, facilitando a adaptação a requisitos legais de diferentes jurisdições.
-    \item \textbf{Política de auditoria contínua} – O uso de eventos blockchain e logs imutáveis possibilita auditorias em tempo real, atendendo à demanda de transparência citada por reguladores eleitorais.
+    \item \textbf{Pol{\'i}tica de auditoria cont{\'i}nua} – O uso de eventos blockchain e logs imut{\'a}veis possibilita auditorias em tempo real, atendendo {\`a} demanda de transpar{\^e}ncia citada por reguladores eleitorais e preservando o an{\'o}nimo.
 \end{itemize}
 
 \section{Direções Futuras de Pesquisa}
@@ -67,7 +68,7 @@ Os resultados confirmam que VotoChain oferece \textbf{anonimato total}, algo aus
     \item \textbf{Estudos de campo} – Conduzir pilotos reais em organizações não-governamentais ou universidades para validar a aceitação social e a resistência a ataques de coerção.
     \item \textbf{Integração com identidade digital governamental} – Desenvolver protocolos de verificação de identidade (e-ID, DID) que preservem anonimato usando credenciais verificáveis (VCs).
     \item \textbf{Otimizações de ZK-SNARK} – Avaliar novas provas (plonk, halo2) que prometem menor consumo de gas e tempos de geração mais curtos.
-    \item \textbf{Acessibilidade móvel} – Adaptar a UI para dispositivos móveis e conduzir testes de usabilidade com usuários de diferentes faixas etárias e habilidades.
+    \item \textbf{Acessibilidade m{\'o}vel} – Adaptar a UI para dispositivos m{\'o}veis e conduzir testes de usabilidade com utilizadores de diferentes faixas et{\'a}rias e habilidades.
 \end{enumerate}
 
 

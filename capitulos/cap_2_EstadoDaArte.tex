@@ -5,16 +5,17 @@
 
 Esta secção apresenta uma revisão crítica da literatura sobre sistemas de votação eletrónica baseados em blockchain, abordando três eixos principais: (i) plataformas de votação existentes, (ii) técnicas de anonimato e verificação, e (iii) avaliação de desempenho e custos. A pesquisa foi conduzida de forma sistemática em diversas bases de dados científicas, conforme ilustrado na Figura~\ref{fig:bases_dados}.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
     \includegraphics[width=0.7\textwidth]{figuras/Captura de tela 2024-01-11 202802.png}
     \caption{Distribuição da pesquisa bibliográfica por base de dados científica.}
     \label{fig:bases_dados}
 \end{figure}
 
-Para garantir a qualidade da revisão, seguiu-se o processo de seleção sistemática detalhado no fluxograma PRISMA\footnote{Preferred Reporting Items for Systematic Reviews and Meta-Analyses} apresentado na Figura~\ref{fig:prisma}.
+Para garantir a qualidade da revisão, seguiu-se o processo de seleção sistemática detalhado no fluxograma PRISMA\footnotemark apresentado na Figura~\ref{fig:prisma}.
+\footnotetext{Preferred Reporting Items for Systematic Reviews and Meta-Analyses}
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
     \begin{tikzpicture}[
         node distance=1.2cm,
@@ -22,8 +23,8 @@ Para garantir a qualidade da revisão, seguiu-se o processo de seleção sistem�
         arrow/.style={-Stealth, thick}
     ]
         % Nodes
-        \node (ident) [box] {\textbf{Identificação:} Pesquisa inicial em bases de dados (IEEE, ACM, ScienceDirect) \\ Registros encontrados: $N \approx 150$};
-        \node (triagem) [box, below=of ident] {\textbf{Triagem:} Remoção de registros duplicados e irrelevantes \\ Registros triados: $N = 120$};
+        \node (ident) [box] {\textbf{Identifica{\c{c}}{\~a}o:} Pesquisa inicial em bases de dados (IEEE, ACM, ScienceDirect) \\ Registos encontrados: $N \approx 150$};
+        \node (triagem) [box, below=of ident] {\textbf{Triagem:} Remo{\c{c}}{\~a}o de registos duplicados e irrelevantes \\ Registos triados: $N = 120$};
         \node (eleg) [box, below=of triagem] {\textbf{Elegibilidade:} Leitura de resumos e palavras-chave \\ Artigos avaliados: $N = 45$};
         \node (inclu) [box, below=of eleg, fill=green!10] {\textbf{Inclusão:} Estudos selecionados para revisão qualitativa e quantitativa \\ Estudos finais: $N = 25$};
 
@@ -45,13 +46,13 @@ Para garantir a qualidade da revisão, seguiu-se o processo de seleção sistem�
 \section{Plataformas de Votação Baseadas em Blockchain}
 Vários trabalhos propõem a utilização de blockchain para garantir a integridade e a transparência dos processos eleitorais. Entre os mais citados encontram‑se:
 \begin{itemize}
-    \item \textbf{Voatz}\cite{journal_Voatz_2024} – sistema móvel que utiliza a blockchain pública para registrar votos, mas tem sido criticado pela falta de anonimato formal e vulnerabilidades de UI.
+    \item \textbf{Voatz}\cite{journal_Voatz_2024} – sistema m{\'o}vel que utiliza a blockchain p{\'u}blica para registar votos, mas tem sido criticado pela falta de anonimato formal e vulnerabilidades de UI.
     
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.25\textwidth]{figuras/Voatz.png}
         \caption{Logotipo da plataforma Voatz\cite{journal_Voatz_2024}.}
-        \label{fig:logo_voatz}
+        \label{fig:logo_voatz_2024}
     \end{figure}
 
     \item \textbf{Helios}\cite{helios_votacao_nodate} – plataforma de votação eletrónica de código aberto que emprega criptografia homomórfica; embora ofereça auditabilidade, não explora a imutabilidade da blockchain.
@@ -60,7 +61,7 @@ Vários trabalhos propõem a utilização de blockchain para garantir a integrid
         \centering
         \includegraphics[width=0.3\textwidth]{figuras/Helios_Voting_Logo.png}
         \caption{Logotipo da plataforma Helios Voting\cite{helios_votacao_nodate}.}
-        \label{fig:logo_helios}
+        \label{fig:logo_helios_voting}
     \end{figure}
 
     \item \textbf{POLYAS}\cite{noauthor_polyas_nodate} – solução comercial que combina assinatura digital e registro em blockchain privada; a escalabilidade em redes públicas ainda é limitada.
@@ -72,7 +73,7 @@ A análise destas plataformas evidencia um conflito clássico entre auditabilida
 Para atender ao requisito de anonimato verificável, a literatura propõe duas famílias de técnicas:
 \begin{enumerate}
     \item \textbf{Zero‑Knowledge Proofs (ZKP)} – permitem provar a validade de um voto sem revelar seu conteúdo. Exemplos incluem zk‑SNARKs em Ethereum\cite{alvi_dvtchain_2022} e Bulletproofs\cite{hajian_berenjestanaki_blockchain-based_2024}.
-    \item \textbf{Mix‑Nets}\cite{hajian_berenjestanaki_blockchain-based_2024} – embaralham mensagens (votos) entre múltiplos nós, dificultando a associação entre eleitor e voto.
+    \item \textbf{Mix‑Nets}\cite{hajian_berenjestanaki_blockchain-based_2024, vanheck2007} – baralham mensagens (votos) entre m{\'u}ltiplos n{\'o}s, dificultando a associa{\c{c}}{\~a}o entre eleitor e voto.
 \end{enumerate}
 
 Ambas as abordagens apresentam trade‑offs críticos entre eficiência computacional e grau de privacidade. Estudos recentes\cite{hajian_berenjestanaki_blockchain-based_2024} mostram que ZKP, embora ofereça o maior nível de anonimato matemático, pode gerar custos de \textit{gas} superiores a 200 000 units por voto, o que inviabiliza eleições de grande escala em redes públicas. Em contrapartida, as Mix-Nets reduzem o custo computacional on-chain, mas introduzem complexidade na coordenação de nós de mistura e latência na comunicação.
@@ -87,13 +88,14 @@ A análise de desempenho costuma focar em três métricas:
 
 A Tabela~\ref{tab:comparativo} resume os resultados reportados em trabalhos recentes que comparam estas métricas entre as soluções citadas.
 
-\begin{table}[h!]
+\begin{table}[ht!]
 \centering
-\caption{Comparativo de métricas de desempenho entre plataformas de votação blockchain}
+\caption{Comparativo de m{\'e}tricas de desempenho entre plataformas de vota{\c{c}}{\~a}o blockchain}
 \label{tab:comparativo}
+\resizebox{\textwidth}{!}{
 \begin{tabular}{lccc}
 \toprule
-Plataforma & Custo de \textit{gas} (units) & Latência média (s) & Taxa de falhas (\%) \\
+Plataforma & Custo de \textit{gas} (units) & Lat{\^e}ncia m{\'e}dia (s) & Taxa de falhas (\%) \\
 \midrule
 Voatz & 85 000 & 12 & 0.8 \\
 Helios & 45 000 & 8 & 0.3 \\
@@ -101,11 +103,12 @@ POLYAS & 120 000 & 15 & 0.5 \\
 VotoChain (proposta) & \textbf{~150 000 (ZKP)} / \textbf{~90 000 (Mix‑Net)} & \textbf{10} & \textbf{0.2} \\
 \bottomrule
 \end{tabular}
+}
 \end{table}
 
 A revisão sistemática da literatura revela três lacunas fundamentais que o presente trabalho visa colmatar, conforme esquematizado no mapa conceitual da Figura~\ref{fig:mapa_lacunas}.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
     \begin{tikzpicture}[
         node distance=2cm and 2.5cm,
@@ -137,6 +140,6 @@ A revisão sistemática da literatura revela três lacunas fundamentais que o pr
     \label{fig:mapa_lacunas}
 \end{figure}
 
-Estas evidências fundamentam a proposta do \textbf{VotoChain}, cujo objetivo é testar um modelo equilibrado (híbrido) que responda a estas lacunas, detalhado nos capítulos subsequentes.
+Estas evidências fundamentam a proposta do \textbf{VotoChain}, cujo objetivo é testar um modelo equilibrado (híbrido) que responda a estas lacunas de governança e segurança\cite{clegg2000socio, schumpeter1942}, detalhado nos capítulos subsequentes.
 
 

@@ -8,6 +8,7 @@
 *.fdb_latexmk
 *.fls
 *.synctex.gz
+*.synctex(busy)
 *.acn
 *.glo
 *.ist
