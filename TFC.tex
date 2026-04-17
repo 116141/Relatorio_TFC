@@ -179,20 +179,18 @@
 \input{capitulos/abstract}
 
 \newpage
-
-\renewcommand{\listtablename}{Lista de Figuras}
-\addcontentsline{toc}{chapter}{\listtablename}
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
 \listoffigures
 
 \newpage
-
-\renewcommand{\listtablename}{Lista de Tabelas}
+\phantomsection
 \addcontentsline{toc}{chapter}{\listtablename}
 \listoftables
 
 \newpage
-
-% Lista de Abreviaturas e Siglas
+\phantomsection
+\addcontentsline{toc}{chapter}{Lista de Abreviaturas e Siglas}
 \printglossary[title=Lista de Abreviaturas e Siglas, type=\acronymtype]
 
 \newpage
@@ -221,6 +219,7 @@
 \input{capitulos/cap_7_Conclusao}
 
 \newpage
+\phantomsection
 \addcontentsline{toc}{chapter}{Referências Bibliográficas}
 \bibliographystyle{ieeetr}
 \nocite{*}
