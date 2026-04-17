@@ -13,35 +13,50 @@ Esta secção apresenta uma revisão crítica da literatura sobre sistemas de vo
 \end{figure}
 
 Para garantir a qualidade da revisão, seguiu-se o processo de seleção sistemática detalhado no fluxograma PRISMA\footnotemark apresentado na Figura~\ref{fig:prisma}.
-\footnotetext{Preferred Reporting Items for Systematic Reviews and Meta-Analyses}
+\footnotetext{Preferred Reporting Items for Systematic Reviews and Meta-Analyses 2020 Statement.}
 
-\begin{figure}[ht!]
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}[
-        node distance=1.2cm,
-        box/.style={rectangle, draw, fill=blue!10, text width=6cm, minimum height=1cm, align=left, font=\small},
-        arrow/.style={-Stealth, thick}
+        node distance=1.1cm and 2.2cm,
+        box/.style={rectangle, draw, fill=blue!15, text width=6.5cm, minimum height=1.2cm, align=center, font=\small},
+        excl/.style={rectangle, draw, fill=gray!15, text width=4.5cm, minimum height=1.2cm, align=left, font=\footnotesize},
+        arrow/.style={-Stealth, thick, blue!80!black}
     ]
-        % Nodes
-        \node (ident) [box] {\textbf{Identifica{\c{c}}{\~a}o:} Pesquisa inicial em bases de dados (IEEE, ACM, ScienceDirect) \\ Registos encontrados: $N \approx 150$};
-        \node (triagem) [box, below=of ident] {\textbf{Triagem:} Remo{\c{c}}{\~a}o de registos duplicados e irrelevantes \\ Registos triados: $N = 120$};
-        \node (eleg) [box, below=of triagem] {\textbf{Elegibilidade:} Leitura de resumos e palavras-chave \\ Artigos avaliados: $N = 45$};
-        \node (inclu) [box, below=of eleg, fill=green!10] {\textbf{Inclusão:} Estudos selecionados para revisão qualitativa e quantitativa \\ Estudos finais: $N = 25$};
+        % --- FASE DE IDENTIFICAÇÃO ---
+        \node (ident) [box] {\textbf{Identificação}\\Registos identificados em bases de dados científica\\(IEEE Xplore, ACM Digital Library e Scopus)\\($N = 150$)};
+        
+        \node (dedup) [excl, right=of ident] {Registos removidos antes da triagem:\\$\bullet$ Duplicados ($n=25$)\\$\bullet$ Irrelevância direta ($n=5$)\\($N = 30$)};
+        \draw [arrow] (ident) -- (dedup);
 
-        % Arrows
-        \draw [arrow] (ident) -- (triagem);
-        \draw [arrow] (triagem) -- (eleg);
-        \draw [arrow] (eleg) -- (inclu);
+        % --- FASE DE TRIAGEM ---
+        \node (screen) [box, below=1.2cm of ident] {\textbf{Triagem}\\Registos triados (Título e Resumo)\\($N = 120$)};
+        \draw [arrow] (ident) -- (screen);
 
-        % Details on the side
-        \node (excl1) [right=1cm of triagem, text width=4cm, font=\footnotesize] {Excluídos por título/duplicado ($N=30$)};
-        \node (excl2) [right=1cm of eleg, text width=4cm, font=\footnotesize] {Excluídos por critério de exclusão ($N=75$)};
-        \draw [arrow] (triagem) -- (excl1);
-        \draw [arrow] (eleg) -- (excl2);
+        \node (excl_screen) [excl, right=of screen] {Registos excluídos:\\$\bullet$ Títulos fora do âmbito ($n=45$)\\$\bullet$ Resumos não técnicos ($n=30$)\\($N = 75$)};
+        \draw [arrow] (screen) -- (excl_screen);
+
+        % --- FASE DE ELEGIBILIDADE ---
+        \node (elig) [box, below=1.2cm of screen] {\textbf{Elegibilidade}\\Artigos avaliados na íntegra para elegibilidade\\($N = 45$)};
+        \draw [arrow] (screen) -- (elig);
+
+        \node (excl_elig) [excl, right=of elig] {Artigos excluídos:\\
+            $\bullet$ Ausência de prova formal ($n=8$)\\
+            $\bullet$ Protocolo não auditável ($n=7$)\\
+            $\bullet$ Fora do âmbito eleitoral ($n=5$)\\
+            ($N = 20$)};
+        \draw [arrow] (elig) -- (excl_elig);
+
+        % --- FASE DE INCLUSÃO ---
+        \node (incl) [box, below=1.4cm of elig, fill=blue!25, thick] {\textbf{Inclusão}\\Estudos selecionados para análise comparativa\\no Estado da Arte\\($N = 25$)};
+        \draw [arrow] (elig) -- (incl);
+
     \end{tikzpicture}
-    \caption{Fluxograma PRISMA do processo de seleção de literatura para o Estado da Arte.}
+    \caption{Fluxograma PRISMA 2020 do processo de revisão da literatura. Adaptado das diretrizes PRISMA 2020 para o contexto de sistemas de votação eletrónica baseados em blockchain.}
     \label{fig:prisma}
 \end{figure}
+
+\clearpage
 
 \section{Plataformas de Votação Baseadas em Blockchain}
 Vários trabalhos propõem a utilização de blockchain para garantir a integridade e a transparência dos processos eleitorais. Entre os mais citados encontram‑se:
